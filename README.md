@@ -1,0 +1,105 @@
+<p align="center">
+  <img src="assets/r08_logo.jpg" width="320" alt="Sentinel R08 — Pocket Core" style="border-radius: 16px;" />
+</p>
+
+# 🇪🇸 gpTommy-32k-ES — Native 32,768-Token Vocabulary & Tokenizer for Español (Spanish) (Spagnolo)
+
+[![Official Site](https://img.shields.io/badge/Official%20Site-sentinelhub.eu-007acc.svg)](https://www.sentinelhub.eu)
+[![Ecosystem](https://img.shields.io/badge/Ecosystem-Sentinel%20LifeOS-purple.svg)](https://www.sentinelhub.eu)
+[![Vocabulary](https://img.shields.io/badge/Vocabulary-32,768%20Tokens-blue.svg)](https://github.com/Thomasseri/gpTommy-32k-ES)
+[![Language](https://img.shields.io/badge/Language-ES%20Native%2091%25-green.svg)](https://github.com/Thomasseri/gpTommy-32k-ES)
+[![Author](https://img.shields.io/badge/Author-Thomas%20Seri%20(Sentinel)-orange.svg)](https://www.sentinelhub.eu)
+
+> **Deterministic 32,768-token (`32k`) lexical vocabulary and tokenizer specifically engineered for the Español (Spanish) (`es`) language.**  
+> **Author & Creator:** Thomas Seri (Sentinel)  
+> **Reference Ecosystem:** [Sentinel LifeOS](https://www.sentinelhub.eu) & **Sentinel R-08** Geodesic Model Family
+
+---
+
+## 🌍 Sentinel gpTommy 32k European Language Suite & R-08 Models
+
+The **gpTommy 32k** family provides native whole-word `SSvvv` vocabularies (`32,768` tokens each, with 100% shared control/space/numeric/alphabet IDs) across the 5 major European languages:
+
+* 🇮🇹 **Italiano (`gpTommy-32k`):** [GitHub](https://github.com/Thomasseri/gpTommy-32k) | [Hugging Face](https://huggingface.co/SentinelHub/gpTommy-32k)
+* 🇬🇧 **English (`gpTommy-32k-EN`):** [GitHub](https://github.com/Thomasseri/gpTommy-32k-EN) | [Hugging Face](https://huggingface.co/SentinelHub/gpTommy-32k-EN)
+* 🇩🇪 **Deutsch (`gpTommy-32k-DE`):** [GitHub](https://github.com/Thomasseri/gpTommy-32k-DE) | [Hugging Face](https://huggingface.co/SentinelHub/gpTommy-32k-DE)
+* 🇫🇷 **Français (`gpTommy-32k-FR`):** [GitHub](https://github.com/Thomasseri/gpTommy-32k-FR) | [Hugging Face](https://huggingface.co/SentinelHub/gpTommy-32k-FR)
+* 🇪🇸 **Español (`gpTommy-32k-ES`):** [GitHub](https://github.com/Thomasseri/gpTommy-32k-ES) | [Hugging Face](https://huggingface.co/SentinelHub/gpTommy-32k-ES)
+
+### Related Sentinel R-08 Geodesic Language Models:
+* 🤖 **Sentinel R-08 v7 (Pyramid 44.5M):** [GitHub](https://github.com/Thomasseri/R-08) | [Hugging Face](https://huggingface.co/SentinelHub/R-08)
+* 🚀 **Sentinel R-08 v7.2 (51.6M with 12 Icosahedral Hubs):** [GitHub](https://github.com/Thomasseri/R-08-v7.2) | [Hugging Face](https://huggingface.co/SentinelHub/R-08-v7.2)
+* 🌟 **Sentinel R-08 v7.2a DA ZERO (51.6M Record 82.51% BLiMP):** [GitHub](https://github.com/Thomasseri/R-08-v7.2a) | [Hugging Face](https://huggingface.co/SentinelHub/R-08-v7.2a)
+
+---
+
+## 🎯 Why `gpTommy-32k-ES` is Different from Statistical Subword Tokenizers
+
+Traditional statistical BPE tokenizers fragment words into arbitrary sub-syllables, inflating context length and computational cost while increasing spelling hallucinations in compact neural models.
+
+**gpTommy-32k-ES** adopts a deterministic, structured lexical approach:
+* Contains **29,775 complete native Español (Spanish) words and morphemes** (**90.9%** of the vocabulary), covering base lemmas, plurals, conjugated verbs, and scientific/industrial terminology.
+* Includes the **complete uppercase/lowercase/accented Latin alphabet (`A..Z`)**, **all single digits (`0..9`) and two-digit numbers (`00..99`)**, **spaces/newlines/tabs (`<spazio>`, `<riga>`, `<tab>`)**, **punctuation and math operators**, and **35 special AI/Chat/Reasoning control tokens (`<|user|>`, `<|assistant|>`, `<|think|>`)** at the exact same fixed IDs as the entire `gpTommy` suite.
+
+---
+
+## 📚 Card-Index Architecture: The 5-Digit `SSvvv` System
+
+The vocabulary uses a deterministic 5-digit index `SSvvv` (`00000` .. `32767`):
+* **`SS` (Card / Scheda `00`..`32`)**: Identifies the category or initial alphabet letter (`01`..`26` = **A..Z**).
+* **`vvv` (Row `000`..`999`)**: Identifies the specific entry within that card.
+
+| Card (`SS`) | Global ID Range | Primary Content | Token Examples |
+| :---: | :---: | :--- | :--- |
+| **`00`** | `00000` – `00999` | Special AI tokens, punctuation, digits `0-9`, math symbols | `<\|user\|>`, `<\|assistant\|>`, `<\|think\|>`, `<spazio>`, `+`, `-`, `=`, `*` |
+| **`01`** | `01000` – `01999` | Letter **A** (alphabet headers + native Spanish words) | `así`, `años`, `ahora`, `antes`, `aunque`, `además`, `automatización` |
+| **`03`** | `03000` – `03999` | Letter **C** | `con`, `como`, `cuando`, `cada`, `contra`, `cilindro`, `cojinete`, `control` |
+| **`19`** | `19000` – `19999` | Letter **S** | `sobre`, `sin`, `siempre`, `sistema`, `seguridad`, `sensor`, `servicio` |
+| **`27`** | `27000` – `27999` | Spanish Morphemes (prefixes/suffixes) + high-freq words | `-ción`, `-miento`, `-mente`, `-dad`, `-idad`, `-ivo`, `-able`, `des-`, `sobre-` |
+| **`30`** | `30000` – `30999` | Two-digit numbers `00..99`, scientific units & lexicon | `00`..`99`, `€`, `°`, `²`, `³`, `±`, `×`, `÷`, `≠`, `≤`, `≥` |
+
+---
+
+## 📊 Breakdown of the 32,768 Tokens (`32k` = Vocabulary Size)
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                  gpTommy-32k-ES   (32,768 IDs)              │
+├──────────────────────────────────────┬──────────┬───────────┤
+│ Category                             │ Count    │ Share     │
+├──────────────────────────────────────┼──────────┼───────────┤
+│ Complete Native Words & Morphemes    │   29,775 │     90.9% │
+│ Single Characters, Digits & Symbols  │    1,925 │      5.9% │
+│ Special AI Control, Space & Chat IDs │    1,068 │      3.2% │
+└──────────────────────────────────────┴──────────┴───────────┘
+```
+
+---
+
+## 🚀 Quick Usage in Python (Zero External Dependencies)
+
+`gptommy_tokenizer.py` is 100% self-contained and requires no external libraries:
+
+```python
+from gptommy_tokenizer import gpTommyTokenizer
+
+# 1. Initialize the tokenizer with gpTommy-32k-ES
+tokenizer = gpTommyTokenizer("gpTommy_vocab_by_id.txt")
+
+# 2. Encode a Español (Spanish) sentence into token IDs
+text = "El rodamiento rígido de bolas reduce la fricción de rodadura en el mantenimiento industrial."
+token_ids = tokenizer.encode(text)
+print("Token IDs:", token_ids)
+
+# 3. Decode back to the exact original text
+decoded = tokenizer.decode(token_ids)
+print("Decoded:", decoded)
+```
+
+---
+
+## 🛡️ License & Attribution
+
+Released under the **R08 Non-Commercial Research & Ethical License v2.0** (see [`LICENSE.md`](LICENSE.md)), with strict ethical protections (prohibition of military, weapon, surveillance, and harmful uses) and Exclusive Jurisdiction at the **Court of Milan (Italy)**.
+
+All rights to the `SSvvv` card architecture and lexical organization are reserved by **Thomas Seri (Sentinel)** — **[www.sentinelhub.eu](https://www.sentinelhub.eu)**.

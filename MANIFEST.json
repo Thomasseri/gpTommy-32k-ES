@@ -1,0 +1,18 @@
+{
+ "name": "gpTommy-32k-ES",
+ "version": "4.0.0",
+ "date": "2026-11-18",
+ "author": "Thomas Seri (Sentinel)",
+ "language": "es",
+ "vocabulary_size": 32768,
+ "fixed_prefix_ids": "0..1051",
+ "learned_pieces": 31716,
+ "files": {
+  "gptommy_v4.py": "0c9fb55d79d0b29df7052a68b218ea98384b0ae5aa79b01c469dc3b4e35aed75",
+  "gpTommy_v4_ES_vocab_by_id.txt": "8e305bab78f8c90a39da5b8feda6899c601ef6eddeb55995f64e256b04167d37",
+  "vocab.json": "e74f9372a6c607f8fa04ed0c82aed864e4b0e172f42450817dee55cfa3375319",
+  "LICENSE.md": "4339e347537e4dbd416354a8293686efc90f1244f8ba55ac90c508b2222d4410"
+ },
+ "tokenizer_fingerprint": "9f316b91eca0505da8da98b4f12531b19fe62e9cfebf2004fa4d39a750588919",
+ "previous_version": "2.0.0 (git tag v2.0.0)"
+}
